@@ -1,6 +1,9 @@
 from app.database import bookstore
 from app.schemas.user import UserSchema
 
+def get_all_users(bookstore):
+    # Returns all the users as a list
+    return bookstore["users"]
 
 def get_user_by_username(username: str):
     for user in bookstore['users']:
