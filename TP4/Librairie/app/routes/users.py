@@ -3,7 +3,7 @@ from fastapi import APIRouter, HTTPException, status, Depends, Body
 from fastapi.responses import JSONResponse
 from Templates import *
 from app.login_manager import login_manager
-import app.services.users as users
+import app.services.users as service
 from app.schemas.user import UserSchema
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -19,12 +19,12 @@ def login_route(
         username: Annotated[str, Body()],
         password: Annotated[str, Body()],
 ):
-    user = users.get_user_by_username(username)
+    user = service.get_user_by_username(username)
     if user is None or user.password != password:
         return HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Bad credentials."
-        )
+            detail="incorrect username or password.")
+        
     access_token = login_manager.create_access_token(
         data={'sub': user.id}
     )
@@ -64,9 +64,7 @@ def register_form(request: Request):
 @router.post("/register")
 def  register_action(request: Request, username: str, firstname: str, name: str,email: str, password: str):
     # Check if the user already exists in the database
-    ok = True
-    for user in users.get_all_users():
-        if user["username"] == username:
-            raise
-
+    service.register(username, firstname, name, email, password)
+    return templates.TemplateResponse("books/all")
+    
 #miaw

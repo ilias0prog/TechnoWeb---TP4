@@ -1,21 +1,32 @@
-<!DOCTYPE html>
-<html>
+{% extends "empty_page.html" %}
+{% block content %}
+
 <head>
-    <title>Page d'enregistrement</title>
+    <title>New account</title>
 </head>
 <body>
-    <h1>Créer un compte</h1>
+    <h1 class="header">Create an account</h1>
     
     <form>
-        <label for="username">Nom d'utilisateur:</label>
-        <input type="text" id="username" name="username" required><br><br>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required><br><br>
+
+        <label for="firstname">Firstname:</label>
+        <input type="text" name="firstname" required><br><br>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" required><br><br>
         
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required><br><br>
+        <label for="password">Password :</label>
+        <input type="password" name="password" required><br><br>
         
-        <input type="submit" value="Se connecter">
+        <input type="submit" value="Sign in">
     </form>
     
-    <p>Vous n'avez pas de compte ? <a href="register.html">Créer un compte</a></p>
+    <p>Do you have an account ? <a href="login.html">Connect to your account</a></p>
 </body>
-</html>
+
+{% endblock %}

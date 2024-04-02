@@ -48,14 +48,20 @@ bookstore = {
     "users": [
         {
             "id": str(uuid4()),
-            "username": "john",
-            "password": "john_password",
+            "username": "johndu77",
+            "firstname" : "John",
+            "name" : "Wick",
+            "password": "john_password",    
+            "email": "John.Wick@gmail.com",
             "admin": True
         },
         {
             "id": str(uuid4()),
-            "username": "steve",
+            "username": "stkiller6972",
+            "firstname" : "Steve",
+            "name" : "Jobs",
             "password": "steve_password",
+            "email": "Steve.Jobs@gmail.com",
             "admin": False
         },
     ]

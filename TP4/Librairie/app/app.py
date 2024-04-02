@@ -2,7 +2,7 @@ from fastapi import FastAPI,Request,status
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from app.routes.books import router as book_router
-
+from starlette.staticfiles import StaticFiles
 from fastapi.staticfiles import StaticFiles
 
 
@@ -14,9 +14,9 @@ app.include_router(book_router)
 
 @app.get("/")
 def route(request: Request):
-    return RedirectResponse("./books/all", status_code= status.HTTP_303_SEE_OTHER)
+    return RedirectResponse("./users/login", status_code= status.HTTP_303_SEE_OTHER)
 
-app.mount("/static", StaticFiles(directory="Librairie/static"), name="static")
+app.mount("/static", StaticFiles(directory="TP4/Librairie/static"), name="static")
 
 @app.on_event('startup')
 def on_startup():

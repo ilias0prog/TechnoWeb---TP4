@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html>
+{% extends "empty_page.html" %}
+{% block content %}
+
 <head>
-    <title>Page de connexion</title>
+    <title>Log in</title>
 </head>
 <body>
-    <h1>Connexion</h1>
+    <h1 class="header">Log into your account</h1>
     
     <form>
-        <label for="username">Nom d'utilisateur:</label>
-        <input type="text" id="username" name="username" required><br><br>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required><br><br>
         
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br><br>
         
-        <input type="submit" value="Se connecter">
+        <input type="submit" value="Connect">
     </form>
     
-    <p>Vous n'avez pas de compte ? <a href="register.html">Créer un compte</a></p>
+    <p>You don't have an account ? <a href="register.html">Create an account</a></p>
 </body>
-</html>
+
+{% enblock  %}
