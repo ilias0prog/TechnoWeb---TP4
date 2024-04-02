@@ -7,7 +7,7 @@ from starlette.staticfiles import StaticFiles
 from fastapi.staticfiles import StaticFiles
 
 
-templates = Jinja2Templates(directory="Librairie\Templates")
+templates = Jinja2Templates(directory="\TP4\Librairie\Templates")
 
 
 app = FastAPI(title="My bookstore")
@@ -25,7 +25,3 @@ def on_startup():
     print("Server started.")
 def on_shutdown():
     print("Bye bye!")
-
-
-
-

@@ -21,17 +21,21 @@ def get_user_by_id(id: str):
     return None
 
 
-def register(username: str, firstname: str, name: str,email: str, password: str):
+def register(username: str, firstname: str, name: str,email: str, password: str, confirm_your_password: str):
     # Adds a new username to the database
     maxLengthPassword = 20
     minLengthPassword = 8
+    
+    if password != confirm_your_password:
+        raise ValueError("The passwords do not match.")
+    
     if len(password) < minLengthPassword or len(password) > maxLengthPassword:
         raise ValueError("The length of the password must be between {} and {}".format(minLengthPassword,maxLengthPassword))
     
     for user in get_all_users():
         if user["username"] == username or user["email"] == email:
             raise ValueError ("This username or email is already taken.")
-    
+
     newUser = {
         "id": str(uuid4()),
             "username": username,

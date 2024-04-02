@@ -1,5 +1,6 @@
 from typing import Annotated
 from fastapi import APIRouter, HTTPException, status, Depends, Body
+from fastapi.responses import RedirectResponse, JSONResponse
 from fastapi.responses import JSONResponse
 from Templates import *
 from app.login_manager import login_manager
@@ -8,16 +9,16 @@ from app.schemas.user import UserSchema
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
 
-templates = Jinja2Templates(directory="Librairie\Templates")
+templates = Jinja2Templates(directory="TP4\Librairie\Templates")
 router = APIRouter(prefix="/users")
 
 @router.get("/login")
 def login_form(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
+    return templates.TemplateResponse("/login.html", {"request": request})
 @router.post("/login")
 def login_route(
         username: Annotated[str, Body()],
-        password: Annotated[str, Body()],
+        password: Annotated[str, Body()]
 ):
     user = service.get_user_by_username(username)
     if user is None or user.password != password:
@@ -35,7 +36,7 @@ def login_route(
         value=access_token,
         httponly=True
     )
-    return response
+    return response, status.HTTP_200_OK, templates.TemplateResponse("/register.html")
 
 
 
@@ -59,12 +60,12 @@ def current_user_route(
 
 @router.get("/register")
 def register_form(request: Request):
-    return templates.TemplateResponse("register.html", {"request": request})
+    return templates.TemplateResponse("/register.html", context={"request": request})
 
 @router.post("/register")
-def  register_action(request: Request, username: str, firstname: str, name: str,email: str, password: str):
+def  register_action(request: Request, username: str, firstname: str, name: str,email: str, password: str, confirm_password: str):
     # Check if the user already exists in the database
-    service.register(username, firstname, name, email, password)
-    return templates.TemplateResponse("books/all")
-    
+    service.register(username, firstname, name, email, password, confirm_password)
+    return RedirectResponse(url="/books/all", status_code=302)
+
 #miaw

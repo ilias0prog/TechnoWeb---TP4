@@ -15,7 +15,7 @@ from typing import Optional
 from app.database import bookstore
 
 
-templates = Jinja2Templates(directory="Librairie\Templates")
+templates = Jinja2Templates(directory="TP4\Librairie\Templates")
 
 # Define the router for books
 router = APIRouter(prefix="/books", tags=["Books"])
