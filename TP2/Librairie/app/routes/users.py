@@ -58,4 +58,5 @@ def current_user_route(
     return user
 
 @router.get("/register")
-def
+def register_form(request: Request):
+    return templates.TemplateResponse("register.html", {"request": request})
