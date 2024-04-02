@@ -56,3 +56,6 @@ def current_user_route(
     user: UserSchema = Depends(login_manager),
 ):
     return user
+
+@router.get("/register")
+def
