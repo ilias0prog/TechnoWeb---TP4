@@ -7,7 +7,7 @@ element {
 
 body {
     /* 1rem = 16px */
-    padding: 0;
+    padding: 6rem;
     font-family: Arial, Helvetica, sans-serif;
     background: #19191c !important;
 }
@@ -28,11 +28,7 @@ body {
     margin-bottom: 3vh;
 }
 
-.table_container {
-    width: 80% !important;
-    padding: 0 !important;
-    border: solid white !important;
-}
+.container {}
 
 th {
     font-size: larger;

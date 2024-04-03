@@ -1,7 +1,7 @@
 {% extends "empty_page.html" %}
 {% block content %}
 
-<h1 class="header">Log into your account</h1>
+<h1>Log into your account</h1>
     
 <form action="/users/login" method="post">
     <div class="form-group">
@@ -14,7 +14,7 @@
         <input type="password" class="form-control" name="password" required><br><br>
     </div>
 
-    <button type="submit" class="btn btn-success mx-4" href="http://127.0.0.1:8000/books/all">Log in</button>
+    <button type="submit" class="form_button" href="http://127.0.0.1:8000/books/all">Log in</button>
 
 </form>
     
