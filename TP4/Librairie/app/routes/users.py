@@ -19,6 +19,11 @@ def login_form(request: Request):
 def login_route( username: Annotated[str, Form()], password: Annotated[str,Form()]):
     
     user = service.get_user_by_username(username)
+    if user.blocked == True:
+        return HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="User is blocked."
+        )
     if user is None or user.password != password:
         return HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
