@@ -43,7 +43,8 @@ def register(username: str, firstname: str, name: str,email: str, password: str,
             "name" : name,
             "password": password,    
             "email": email,
-            "admin": False
+            "admin": False,
+            "blocked": False
     }
     
     bookstore["users"].append(newUser)

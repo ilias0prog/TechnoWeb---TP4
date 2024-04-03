@@ -54,7 +54,8 @@ bookstore = {
             "password": "john_password",    
             "email": "John.Wick@gmail.com",
             "admin": True,
-            "blocked": False
+            "blocked": False,
+            "connected": False
         },
         {
             "id": str(uuid4()),
@@ -64,7 +65,8 @@ bookstore = {
             "password": "steve_password",
             "email": "Steve.Jobs@gmail.com",
             "admin": False,
-            "blocked": False
+            "blocked": False,
+            "connected": False
         },
     ]
 }

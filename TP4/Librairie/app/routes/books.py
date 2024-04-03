@@ -32,10 +32,13 @@ def get_all_books(request: Request):
     """
     booknumber = str(len(bookstore["books"]))
     books = service.get_all_books()
-    return templates.TemplateResponse(
-        "all_books.html",
-        context={'request': request, 'books': books, 'booknumber': booknumber}
-    )
+    for user in bookstore["users"]:
+        if user["connected"] == True:
+            return templates.TemplateResponse(
+                "all_books.html",
+                context={'request': request, 'books': books, 'booknumber': booknumber, "user": user}
+            )
+    
 
 @router.get('/new')
 def ask_to_create_new_book(request: Request):

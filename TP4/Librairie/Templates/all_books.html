@@ -13,7 +13,17 @@
             <th>Editeur</th>
         </tr>
         {% for book in books %}
+        {% if user.admin == True %}
         {{ show_book(book.id, book.name, book.author, book.editor) }}
+        {% else %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.editor }}</td>
+        </tr>
+        {% endif %}
         {% endfor %}
     </table> 
 </div>
@@ -22,8 +32,10 @@
     Nombre de livre : {{ booknumber }}
 </div>
 
+{% if  user.admin == True %}
 <div>
     <a class="btn btn-outline-success mx-4" href="/books/new">Ajouter un nouveau livre</a>
 </div>
+{% endif %}
 
 {% endblock %}

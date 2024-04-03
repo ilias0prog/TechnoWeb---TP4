@@ -8,6 +8,8 @@ import app.services.users as service
 from app.schemas.user import UserSchema
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
+from app.database import bookstore
+
 
 templates = Jinja2Templates(directory="TP4\Librairie\Templates")
 router = APIRouter(prefix="/users")
@@ -32,10 +34,12 @@ def login_route( username: Annotated[str, Form()], password: Annotated[str,Form(
     access_token = login_manager.create_access_token(
         data={'sub': user.id}
     )
-    
+    for user in bookstore["users"]:
+        if user["username"] == username:
+            user["connected"] = True
     response = RedirectResponse(url="/books/all", status_code=302)
     
-    return  response
+    return response
 
 
 
