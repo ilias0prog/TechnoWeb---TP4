@@ -1,11 +1,13 @@
 @import url('cabinet-grotesk.css');
+@import url('author.css');
 
 
 * {
     margin: 0;
+    padding: 0;
     font-family: CabinetGrotesk-Bold;
     color: #19191c;
-    background-color: #e6e6e3;
+    /*background-color: #e6e6e3;*/
 }
 
 main {
@@ -15,6 +17,9 @@ main {
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    background: url(bookstore2.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 p,
@@ -33,6 +38,11 @@ h1 {
     padding-bottom: 5vh;
     text-align: center;
     font-size: 5em;
+}
+
+/*Home page*/
+.header{
+
 }
 
 .form_container {

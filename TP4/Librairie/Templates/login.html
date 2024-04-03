@@ -1,7 +1,8 @@
 {% extends "empty_page.html" %}
 {% block content %}
 
-<h1>Log into your account</h1>
+<body class="login_page">
+    <h1>Log into your account</h1>
     
 <form action="/users/login/{{username}}/{{password}}" method="post">
     <div class="form-group">
@@ -19,5 +20,6 @@
 </form>
     
 <p>You don't have an account ?<a href="register" >Go to register</a></p>
+</body>
 
 {% endblock  %}

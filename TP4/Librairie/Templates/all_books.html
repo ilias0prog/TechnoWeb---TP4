@@ -3,27 +3,47 @@
 
 {% block content %}
 
-<div class="table_container">
-    <table class="table">
-        <tr>
-            <th>Modifier</th>
-            <th>Supprimer</th>
-            <th>Titre</th>
-            <th>Auteur</th>
-            <th>Editeur</th>
-        </tr>
-        {% for book in books %}
-        {{ show_book(book.id, book.name, book.author, book.editor) }}
-        {% endfor %}
-    </table> 
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Our Books</title>
+</head>
 
-<div> 
-    Nombre de livre : {{ booknumber }}
-</div>
-
-<div>
-    <a class="btn btn-outline-success mx-4" href="/books/new">Ajouter un nouveau livre</a>
-</div>
+<body class="home_page">
+    <header class="header">
+        <a href="#" class="logo">Logo</a>
+    
+        <nav class="navbar">
+            <a href="#">Books</a>
+            <a href="#">Login</a>
+            <a href="#">About us</a>
+            <a href="#">Shrek</a>
+        </nav>
+    </header>
+    
+    <div class="table_container">
+        <table class="table">
+            <tr>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Editeur</th>
+            </tr>
+            {% for book in books %}
+            {{ show_book(book.id, book.name, book.author, book.editor) }}
+            {% endfor %}
+        </table> 
+    </div>
+    
+    <div> 
+        Nombre de livre : {{ booknumber }}
+    </div>
+    
+    <div>
+        <a class="btn btn-outline-success mx-4" href="/books/new">Ajouter un nouveau livre</a>
+    </div>
+    
+</body>
 
 {% endblock %}
