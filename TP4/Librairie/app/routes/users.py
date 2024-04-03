@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import APIRouter, HTTPException, status, Depends, Body
+from fastapi import APIRouter, HTTPException, status, Depends,Form
 from fastapi.responses import RedirectResponse, JSONResponse
 from fastapi.responses import JSONResponse
 from Templates import *
@@ -16,10 +16,8 @@ router = APIRouter(prefix="/users")
 def login_form(request: Request):
     return templates.TemplateResponse("/login.html", {"request": request})
 @router.post("/login")
-def login_route(
-        username: Annotated[str, Body()],
-        password: Annotated[str, Body()]
-):
+def login_route( username: Annotated[str, Form()], password: Annotated[str,Form()]):
+    
     user = service.get_user_by_username(username)
     if user is None or user.password != password:
         return HTTPException(
@@ -30,13 +28,9 @@ def login_route(
         data={'sub': user.id}
     )
     
-    response = JSONResponse({"status": "success"})
-    response.set_cookie(
-        key=login_manager.cookie_name,
-        value=access_token,
-        httponly=True
-    )
-    return response, status.HTTP_200_OK, templates.TemplateResponse("/register.html")
+    response = RedirectResponse(url="/books/all", status_code=302)
+    
+    return  response
 
 
 
@@ -66,6 +60,9 @@ def register_form(request: Request):
 def  register_action(request: Request, username: str, firstname: str, name: str,email: str, password: str, confirm_password: str):
     # Check if the user already exists in the database
     service.register(username, firstname, name, email, password, confirm_password)
-    return RedirectResponse(url="/books/all", status_code=302)
+    response = RedirectResponse(url="/books/all", status_code=302)
+    
+    return  response
+
 
 #miaw
