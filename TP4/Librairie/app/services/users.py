@@ -32,7 +32,7 @@ def register(username: str, firstname: str, name: str,email: str, password: str,
     if len(password) < minLengthPassword or len(password) > maxLengthPassword:
         raise ValueError("The length of the password must be between {} and {}".format(minLengthPassword,maxLengthPassword))
     
-    for user in get_all_users():
+    for user in get_all_users(bookstore):
         if user["username"] == username or user["email"] == email:
             raise ValueError ("This username or email is already taken.")
 

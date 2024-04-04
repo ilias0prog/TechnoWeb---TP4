@@ -67,7 +67,7 @@ def register_form(request: Request):
     return templates.TemplateResponse("/register.html", context={"request": request})
 
 @router.post("/register")
-def  register_action( username: str, firstname: str, name: str,email: str, password: str, confirm_password: str):
+def  register_action( username:Annotated[str, Form()], firstname: Annotated[str, Form()], name:Annotated[str, Form()],email:Annotated[str, Form()], password: Annotated[str, Form()], confirm_password: Annotated[str, Form()]):
 
     service.register(username, firstname, name, email, password, confirm_password)
     response = RedirectResponse(url="/books/all", status_code=302)
