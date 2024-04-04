@@ -34,24 +34,25 @@ def login_route( username: Annotated[str, Form()], password: Annotated[str,Form(
     access_token = login_manager.create_access_token(
         data={'sub': user.id}
     )
-    for user in bookstore["users"]:
-        if user["username"] == username:
-            user["connected"] = True
+    service.set_connected(username)
     response = RedirectResponse(url="/books/all", status_code=302)
     
     return response
 
 
 
+@router.get("/logout/")
+def login_form(request: Request):
+    return templates.TemplateResponse("/logout.html", {"request": request })
 
-
-@router.post('/logout')
+@router.post('/logout/')
 def logout_route():
-    response = JSONResponse({'status': 'success'})
+    response = RedirectResponse(url="/users/login", status_code=302)
     response.delete_cookie(
         key=login_manager.cookie_name,
         httponly=True
     )
+    service.set_disconnected()
     return response
 
 
@@ -73,5 +74,40 @@ def  register_action(request: Request, username: str, firstname: str, name: str,
     
     return  response
 
+
+@router.get("/admin")
+def admin_form(request: Request):
+    service.get_all_users(bookstore)
+    return templates.TemplateResponse("/admin.html", context={"request": request, "users": service.get_all_users(bookstore)})
+
+@router.get("/block/{username}")
+def block_form(request: Request, username : str):
+    service.get_all_users(bookstore) 
+    return templates.TemplateResponse("/block_confirmation.html", context={"request": request, "username" : username})
+
+
+@router.post("/block/{username}")
+def block_user(username: str) :
+    for user in bookstore["users"] :
+        if user["username"] == username :
+            if not user["blocked"]:
+                user["blocked"] = True
+                return
+    #else: raise ValueError("This user doesn't exist")
+
+@router.get("/unblock/{username}")
+def unblock_form(request: Request, username : str):
+    service.get_all_users(bookstore) 
+    return templates.TemplateResponse("/unblock_confirmation.html", context={"request": request, "username" : username})
+
+
+@router.post("/unblock/{username}")
+def unblock_user(username: str) :
+    for user in bookstore["users"] :
+        if user["username"] == username :
+            if user["blocked"]:
+                user["blocked"] = False
+                return
+    #else: raise ValueError("This user doesn't exist")
 
 #miaw

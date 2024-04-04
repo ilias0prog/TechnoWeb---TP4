@@ -50,3 +50,38 @@ def register(username: str, firstname: str, name: str,email: str, password: str,
     
     bookstore["users"].append(newUser)
     return 
+def block_user(username: str):
+    # Blocks the user with the given username
+    for user in bookstore["users"]:
+        if user["username"] == username:
+            if user["blocked"] == True:
+                raise ValueError("User is already blocked")
+            else:
+                user["blocked"] = True
+            return
+    raise ValueError("User not found")
+def unblock_user(username: str):
+    # Unblocks the user with the given username
+    for user in bookstore["users"]:
+        if user["username"] == username:
+            if user["blocked"] == False:
+                raise ValueError("User is already unblocked")
+            else:
+                user["blocked"] = False
+            return
+    raise ValueError("User not found")
+
+def set_connected(username: str):
+    for user in bookstore["users"]:
+        if user["username"] == username:
+            user["connected"] = True
+            return
+    raise ValueError("This user doesn't exist")
+    
+def set_disconnected():
+    for user in bookstore["users"]:
+        if user["connected"] == True :
+            user["connected"] = False
+            return
+    raise ValueError("This user doesn't exist")
+

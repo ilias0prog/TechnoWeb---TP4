@@ -3,43 +3,69 @@
 
 {% block content %}
 
-<div class="table_container">
-    <table class="table">
-        <tr>
+<head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'></head>
+
+<body class="Homepage">
+    <nav class="navbar">
+        <a href="/books/all" class="logo">
+            <i class='bx bxs-book'></i>
+        </a>
+        <h1 class="hometitle">Our Bookstore</h1>
+        <div class="home_links">
+            <ul>
+                {% if user.admin == True %}
+                <li> <a href="/users/admin">Admin</a></li>
+                <li> <a href="/users/logout">Logout</a></li>
+                {% else %}
+                <li> <a href="/users/logout">Logout</a></li>
+                {% endif %}
+            </ul>
+    
+        </div>
+    </nav>
+    
+    <div class="table_container">
+        <table class="book_table">
+            <thead>
+                {% if user.admin == True %}
+                <th>Modify</th>
+                <th>Delete</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Editor</th>
+                {% else %}
+                <th>Title</th>
+                <th>Author</th>
+                <th>Editor</th>
+            </thead>
+            {% endif %} 
+            {% for book in books %}
             {% if user.admin == True %}
-            <th>Modifier</th>
-            <th>Supprimer</th>
-            <th>Titre</th>
-            <th>Auteur</th>
-            <th>Editeur</th>
+            {{ show_book(book.id, book.name, book.author, book.editor) }}
             {% else %}
-            <th>Titre</th>
-            <th>Auteur</th>
-            <th>Editeur</th>
-        </tr>
-        {% endif %} 
-        {% for book in books %}
-        {% if user.admin == True %}
-        {{ show_book(book.id, book.name, book.author, book.editor) }}
-        {% else %}
-        <tr>
-            <td>{{ book.name }}</td>
-            <td>{{ book.author }}</td>
-            <td>{{ book.editor }}</td>
-        </tr>
-        {% endif %}
-        {% endfor %}
-    </table> 
-</div>
+            <tbody>
+                <td>{{ book.name }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.editor }}</td>
+            </tbody>
+            {% endif %}
+            {% endfor %}
+        </table> 
+        
+    </div>
+    
+    {% if  user.admin == True %}
+    <div class="add_button_container">
+        <a class="button_link" href="/books/new"><i class='bx bx-book-add' id="add_button"></i></box-icon></a>
+    </div>
+    {% endif %}
 
-<div> 
-    Nombre de livre : {{ booknumber }}
-</div>
-
-{% if  user.admin == True %}
-<div>
-    <a class="btn btn-outline-success mx-4" href="/books/new">Ajouter un nouveau livre</a>
-</div>
-{% endif %}
+    <div class="nb_books"> 
+        Nombre de livres : {{ booknumber }}
+    </div>
+    
+    
+</body>
 
 {% endblock %}

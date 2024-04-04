@@ -1,0 +1,29 @@
+{% extends "empty_page.html" %}
+{% block content %}
+
+<h1>Logout</h1>
+    
+
+<form action="/users/logout/"  method="post"> 
+    <div class="form-group">
+        <!--<button class="button_link" type="submit">Oui</button>-->
+        <button class="confirm_logout" type="submit">Oui</button>
+        
+    </div>
+</form>
+  
+
+<div>
+    <a class="btn btn-outline-dark mx-2" href="/books/all">Retour</a>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

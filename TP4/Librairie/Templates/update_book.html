@@ -1,21 +1,35 @@
 {% extends "empty_page.html" %}
+
 {% block content %}
+
+<h1 class="header">Edit the book {{title}}</h1>
+
 <form action="/books/update/{{id}}" method="post">
 
     <div class="form-group">
-        <input type="hidden">
-        <label for="name">Name:</label><br>
-        <input type="text" class="form-control" placeholder="{{name}}" name="name" value="{{name}}"><br>
-        <label for="author">Author:</label><br>
-        <input type="text" class="form-control" placeholder="{{name}}"  name="author" value="{{author}}"><br>
-        <label for="editor">Editor:</label><br>
-        <input type="text" class="form-control" placeholder="{{name}}"  name="editor" value="{{editor}}"><br>
-        <input class="btn btn-outline-success mx-4" type="submit" value="Confirm">
+        <label for="book_name">Title</label>
+        <input type="text" class="form-control" id="book_name"
+               name="name"/>
     </div>
+
+    <div class="form-group">
+        <label for="author_name">Author</label>
+        <input type="text" class="form-control" id="author_name"
+               name="author"/>
+    </div>
+    <div class="form-group">
+        <label for="editor_name">Editor</label>
+        <input type="text" class="form-control" id="editor_name"
+               name="editor"/>
+    </div>
+
+
+    <button type="submit" class="form_button" id="confirm_edit_button" href="/books/all">Ajouter le livre</button>
+
 </form>
 
 <div>
-    <a class="btn btn-outline-dark mx-2" href="/books/all">Retour</a>
+    <a class="back_button" href="/books/all">Retour</a>
 </div>
 
 {% endblock %}

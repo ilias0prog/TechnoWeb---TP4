@@ -1,11 +1,16 @@
 {% macro show_book(id,name, author, editor) %}
+
+<head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
     <tr>
         <td>
-            <a class="btn btn-outline-dark mx-2" href="/books/update/{{ id }}">Modifier</a>
+            <a class="btn btn-outline-dark mx-2" href="/books/update/{{ id }}"><i class='bx bx-message-square-edit' id="edit_button"></i></a>
         </td>
 
         <td>
-        <a class="btn btn-outline-dark mx-2" href="/books/delete/{{ id }}">Supprimer</a>
+            <a class="btn btn-outline-dark mx-2" href="/books/delete/{{ id }}"><i class='bx bx-message-square-x' id="delete_button"></i></a>
 
         </td>
 
@@ -15,4 +20,26 @@
 
         <td>{{ editor }}</td>
     </tr>
+{% endmacro %}
+{% macro show_user(username,firstname, name, email, blocked) %}
+    <tbody>
+    
+        <td class="username">{{ username }}</td>
+        
+        <td>{{ firstname }}</td>
+
+        <td>{{ name }}</td>
+
+        <td>{{ email }}</td>
+
+        <td>{{ blocked }}</td>
+        <td>
+            <a class="btn btn-outline-dark mx-2" href="/users/block/{{ username }}"><i class='bx bx-lock-alt' id="block_button"></i></a>
+        </td>
+
+        <td>
+        <a class="btn btn-outline-dark mx-2" href="/users/unblock/{{ username }}"><i class='bx bx-lock-open-alt' id="unblock_button"></i></a>
+
+        </td>
+    </tbody>
 {% endmacro %}
