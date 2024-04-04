@@ -42,7 +42,7 @@ def login_route( username: Annotated[str, Form()], password: Annotated[str,Form(
 
 
 @router.get("/logout/")
-def login_form(request: Request):
+def logout_form(request: Request):
     return templates.TemplateResponse("/logout.html", {"request": request })
 
 @router.post('/logout/')
@@ -67,8 +67,8 @@ def register_form(request: Request):
     return templates.TemplateResponse("/register.html", context={"request": request})
 
 @router.post("/register")
-def  register_action(request: Request, username: str, firstname: str, name: str,email: str, password: str, confirm_password: str):
-    # Check if the user already exists in the database
+def  register_action( username: str, firstname: str, name: str,email: str, password: str, confirm_password: str):
+
     service.register(username, firstname, name, email, password, confirm_password)
     response = RedirectResponse(url="/books/all", status_code=302)
     
