@@ -6,19 +6,23 @@
 <div class="table_container">
     <table class="table">
         <tr>
+            {% if user.admin == True %}
             <th>Modifier</th>
             <th>Supprimer</th>
             <th>Titre</th>
             <th>Auteur</th>
             <th>Editeur</th>
+            {% else %}
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Editeur</th>
         </tr>
+        {% endif %} 
         {% for book in books %}
         {% if user.admin == True %}
         {{ show_book(book.id, book.name, book.author, book.editor) }}
         {% else %}
         <tr>
-            <td></td>
-            <td></td>
             <td>{{ book.name }}</td>
             <td>{{ book.author }}</td>
             <td>{{ book.editor }}</td>
