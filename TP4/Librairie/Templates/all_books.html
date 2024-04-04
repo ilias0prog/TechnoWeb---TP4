@@ -9,40 +9,22 @@
     <title>Our Books</title>
 </head>
 
-<body class="home_page">
-    <header class="header">
+<body class="Homepage">
+    <nav class="navbar">
         <a href="#" class="logo">Logo</a>
+        <div class="home_links">
+            <ul>
+                <li> <a href="/books/all">Books</a></li>
+                <li> <a href="/users/login">Login</a></li>
+                <li> <a href="#">Admin</a></li>
+                <li> <a href="/users/logout">Logout</a></li>
+                <li> <a href="#">Contact</a></li>
+            </ul>
+
+        </div>
+    </nav>
     
-        <nav class="navbar">
-            <a href="#">Books</a>
-            <a href="#">Login</a>
-            <a href="#">About us</a>
-            <a href="#">Shrek</a>
-        </nav>
-    </header>
     
-    <div class="table_container">
-        <table class="table">
-            <tr>
-                <th>Modifier</th>
-                <th>Supprimer</th>
-                <th>Titre</th>
-                <th>Auteur</th>
-                <th>Editeur</th>
-            </tr>
-            {% for book in books %}
-            {{ show_book(book.id, book.name, book.author, book.editor) }}
-            {% endfor %}
-        </table> 
-    </div>
-    
-    <div> 
-        Nombre de livre : {{ booknumber }}
-    </div>
-    
-    <div>
-        <a class="btn btn-outline-success mx-4" href="/books/new">Ajouter un nouveau livre</a>
-    </div>
     
 </body>
 

@@ -39,6 +39,9 @@ def login_route(
     return response, status.HTTP_200_OK, templates.TemplateResponse("/register.html")
 
 
+@router.get("/logout")
+def register_form(request: Request):
+    return templates.TemplateResponse("/logout.html", context={"request": request})
 
 
 
@@ -69,3 +72,4 @@ def  register_action(request: Request, username: str, firstname: str, name: str,
     return RedirectResponse(url="/books/all", status_code=302)
 
 #miaw
+

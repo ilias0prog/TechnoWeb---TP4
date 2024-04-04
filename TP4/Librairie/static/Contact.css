@@ -1,0 +1,10 @@
+.socials_grid {
+    display: grid;
+    height: 90vh;
+    width: 90vh;
+    margin: 5vh;
+    background-color: blue;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+}

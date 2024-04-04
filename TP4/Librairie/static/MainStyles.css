@@ -1,13 +1,15 @@
 @import url('cabinet-grotesk.css');
 @import url('author.css');
-
+@import url("Contact.css");
 
 * {
     margin: 0;
     padding: 0;
+    text-decoration: none;
+    list-style: none;
     font-family: CabinetGrotesk-Bold;
     color: #19191c;
-    /*background-color: #e6e6e3;*/
+    background-color: #e6e6e3;
 }
 
 main {
@@ -17,9 +19,11 @@ main {
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    /*
     background: url(bookstore2.jpg);
     background-size: cover;
     background-position: center;
+    */
 }
 
 p,
@@ -41,8 +45,60 @@ h1 {
 }
 
 /*Home page*/
-.header{
+.Homepage{
+    background-color:burlywood;
+}
+/*
+.navbar{
+    background-color:brown;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    height: 12vh;
+    line-height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
+}*/
 
+.navbar{
+    position: absolute;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    box-sizing: border-box;
+    box-shadow: 0 1em 1.25em rgba(0,0,0,.03);
+}
+
+.navbar a {
+    font-family: CabinetGrotesk-Extrabold;
+}
+
+.navbar .logo{
+    font-size: 2em;
+    font-family: CabinetGrotesk-Black;
+}
+
+.navbar .home_links ul {
+    display: flex;
+}
+
+.navbar .home_links ul li {
+    margin: 0 24px;
+}
+
+.navbar .home_links ul li.active a {
+    color: #3D3D5C;
+    font-family: CabinetGrotesk-Black;
+}
+
+.table_container {
 }
 
 .form_container {
@@ -87,4 +143,15 @@ input {
     border: solid rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.12);
+}
+
+.socials_grid {
+    display: grid;
+    height: 90vh;
+    width: 90vh;
+    margin: 5vh;
+    background-color: blue;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
 }
