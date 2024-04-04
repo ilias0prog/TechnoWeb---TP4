@@ -92,7 +92,7 @@ def block_user(username: str) :
         if user["username"] == username :
             if not user["blocked"]:
                 user["blocked"] = True
-                return
+                return RedirectResponse(url="/books/all", status_code=302)
     #else: raise ValueError("This user doesn't exist")
 
 @router.get("/unblock/{username}")
@@ -107,7 +107,7 @@ def unblock_user(username: str) :
         if user["username"] == username :
             if user["blocked"]:
                 user["blocked"] = False
-                return
+                return RedirectResponse(url="/books/all", status_code=302)
     #else: raise ValueError("This user doesn't exist")
 
 #miaw
