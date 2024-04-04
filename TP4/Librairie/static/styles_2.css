@@ -66,12 +66,14 @@ h1 {
     position: relative;
     margin-left: auto;
     right: 20%;
-    height: 120px;
+    height: 80px;
     padding: 0;
+    padding-top: 10px;
 }
 
 .navbar{
     position: absolute;
+    top: 10px;
     padding: 50px;
     display: flex;
     justify-content: space-between;
@@ -143,6 +145,11 @@ table th, td {
     background-color: #e6e6e3;
 }
 
+.book_name_cells {
+    font-family: CabinetGrotesk-Bold;
+
+}
+
 .form_container {
     display: grid;
     justify-content: center;
@@ -206,7 +213,7 @@ form {
     box-shadow: 0 0 1em rgba(0,0,0, .1);
 }
 
-#confirm_edit_button {
+#confirm_edit_button, #confirm_delete_button {
     margin-top: 30px;
     height: 80px;
     width: 100px;
