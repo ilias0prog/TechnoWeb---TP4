@@ -176,6 +176,13 @@ form {
     margin-top: 10px;
 }
 
+#register_form {
+    display: flex;
+    position: relative;
+    margin-top: 50px;
+    height: 500px;
+}
+
 .confirm_form_container {
     display: flex;
     justify-content: center;
@@ -213,14 +220,23 @@ form {
     box-shadow: 0 0 1em rgba(0,0,0, .1);
 }
 
-#confirm_edit_button, #confirm_delete_button {
+#confirm_edit_button, #confirm_delete_button, #confirm_register_button, #confirm_logout{
     margin-top: 30px;
     height: 80px;
     width: 100px;
 }
 
+#confirm_logout {
+    grid-template-columns: 1fr;
+    justify-content: center;
+}
+
+#confirm_register_button {
+    width: 100px;
+}
+
 .form_button:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     border-radius: 7px;
     box-shadow: 0 0 1.1em rgba(0,0,0, .2);
 }
@@ -296,4 +312,10 @@ input {
 
 .confirm_block, .confirm_unblock {
 
+}
+
+
+.register_button {
+    border: none;
+    border-bottom: solid #19191c 1px;
 }
