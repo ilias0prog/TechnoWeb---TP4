@@ -233,6 +233,7 @@ form {
 
 #confirm_register_button {
     width: 100px;
+    min-height: 40px;
 }
 
 .form_button:hover {
